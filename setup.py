@@ -37,8 +37,6 @@ setup(
     install_requires=requires
 )
 
-
-
 # 'setup.py build' shortcut.
 if sys.argv[-1].lower() == 'build':
     os.system('python setup.py sdist bdist_wheel --universal')
