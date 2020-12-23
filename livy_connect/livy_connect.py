@@ -1,8 +1,14 @@
-import json, requests, textwrap
+import json
+import requests
+import textwrap
 from pprint import pprint
 from time import sleep
 
+
 class LivyConnect:
+    """
+    LivyConnect
+    """
     _HOST = 'localhost' # Default IP address of host
     _PORT = 8998 # Default Port 
     _headers = {'Content-Type': 'application/json'}
@@ -20,13 +26,12 @@ class LivyConnect:
         if code_type:
             self.code_type = code_type
         self.uri = 'http://{}:{}'.format(self._HOST, self._PORT)
-        
 
     def _get_uri (self, url_appender=None): 
         if url_appender:
             return (self.uri + url_appender)
         return self.uri
-    
+
     def get_sessions_list(self):
         response = requests.get(
             self._get_uri('/sessions')
@@ -149,4 +154,24 @@ class LivyConnect:
         if not response.ok:
             raise Exception(response.json().get("msg"))
         print("Session Deleted, Id : {}".format(session_id))
+
+
+class LivySession(LivyConnect):
+    closed = False
+    def __init__(self, host):
+        super().__init__(host=host)
+        super().create_session()
+        print("Creating session")
+
+    def __enter__(self):
+        return super()
     
+    def __exit__(self, type, value, traceback):
+        self.close()
+    
+    def close(self):
+        x = super().delete_session()
+        if not x:
+            self.closed = True
+        else:
+            self.closed = False  
