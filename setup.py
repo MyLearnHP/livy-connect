@@ -1,12 +1,13 @@
 from setuptools import find_packages, setup
-import os, sys
+import os
+import sys
 
 NAME = 'livy-connect'
-VERSION='0.0.1'
-DESCRIPTION=''
-AUTHOR='hari prasad',
-AUTHOR_EMAIL='hphari1998@gmail.com',
-packages=['livy_connect']
+VERSION = '0.0.1'
+DESCRIPTION = ''
+AUTHOR = 'hari prasad',
+AUTHOR_EMAIL = 'hphari1998@gmail.com',
+packages = ['livy_connect']
 
 requires = [
     'requests'
@@ -25,7 +26,7 @@ with open('README.md', 'r') as f:
     readme = f.read()
 
 setup(
-    name= NAME,
+    name=NAME,
     version=VERSION,
     description=DESCRIPTION,
     long_description=readme,
