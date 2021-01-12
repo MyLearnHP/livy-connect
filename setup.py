@@ -3,10 +3,10 @@ import os
 import sys
 
 NAME = 'livy-connect'
-VERSION = '0.0.1'
+VERSION = '1.1.0'
 DESCRIPTION = ''
-AUTHOR = 'hari prasad',
-AUTHOR_EMAIL = 'hphari1998@gmail.com',
+AUTHOR = 'hari prasad'
+AUTHOR_EMAIL = 'hphari1998@gmail.com'
 packages = ['livy_connect']
 
 requires = [
