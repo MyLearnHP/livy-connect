@@ -72,7 +72,7 @@ class LivyConnect:
         return response.json()
 
     def session_details(self, session_id=None):
-        if not session_id:
+        if not session_id and str(session_id) != "0":
             session_id = self._session_id
         session_url = self._get_uri('/sessions/{}'.format(session_id))
         response = requests.get(
@@ -92,7 +92,7 @@ class LivyConnect:
         return result
 
     def get_codes_list(self, session_id=None):
-        if not session_id:
+        if not session_id and str(session_id) != "0":
             session_id = self._session_id
         session_url = self._get_uri(
             '/sessions/{}/statements'.format(session_id))
@@ -107,7 +107,7 @@ class LivyConnect:
         return result
 
     def post_code(self, code_block, session_id=None):
-        if not session_id:
+        if not session_id and str(session_id) != "0":
             session_id = self._session_id
         data = {'code': code_block}
         session_url = self._get_uri(
@@ -123,9 +123,9 @@ class LivyConnect:
         return response.json()
 
     def code_block_details(self, code_block_id=None, session_id=None):
-        if not session_id:
+        if not session_id and str(session_id) != "0":
             session_id = self._session_id
-        if not code_block_id:
+        if not code_block_id and str(code_block_id) != "0":
             code_block_id = self._code_id
         session_url = self._get_uri(
             '/sessions/{}/statements/{}'.format(session_id, code_block_id))
@@ -148,7 +148,7 @@ class LivyConnect:
         return result
 
     def delete_session(self, session_id=None):
-        if not session_id:
+        if not session_id and str(session_id) != "0":
             session_id = self._session_id
         session_url = self._get_uri('/sessions/{}'.format(session_id))
         response = requests.delete(
