@@ -21,7 +21,7 @@ class LivyConnect:
             self._HOST = host
         if port:
             self._PORT = port
-        if session_id:
+        if session_id or str(session_id)=="0":
             self._session_id = session_id
         if code_type:
             self.code_type = code_type
